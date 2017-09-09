@@ -1,5 +1,5 @@
 class CraftBeerController < ApplicationController
   def index
-    # @reviews = Review.all
+    @reviews = CraftBeerReview.all
   end
 end

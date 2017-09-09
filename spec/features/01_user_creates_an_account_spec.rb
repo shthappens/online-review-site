@@ -20,6 +20,7 @@ feature "A new user creates an account" do
     end
 
     scenario "User posts items and reviews items" do
+      visit new_craft_beer_review_path
 
     end
   end
