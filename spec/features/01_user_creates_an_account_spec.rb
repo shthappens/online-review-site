@@ -14,8 +14,8 @@ feature "A new user creates an account" do
       fill_in "Password", with: "1234567"
       fill_in "Password confirmation", with: "1234567"
       click_button "Sign up"
-      #
-      # expect page_to have_content "Successfully..."
+
+      expect(page).to have_content "Welcome! You have signed up successfully."
 
     end
 
