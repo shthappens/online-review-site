@@ -9,6 +9,7 @@ feature "A new user creates an account" do
   context "user visits the create account page" do
 
     scenario "User successfully creates an account" do
+
       visit new_user_registration_path
       fill_in "Email", with: "me@me.com"
       fill_in "Password", with: "1234567"
@@ -19,9 +20,13 @@ feature "A new user creates an account" do
 
     end
 
-    scenario "User posts items and reviews items" do
-      visit new_craft_beer_review_path
+    scenario 'user fails to register an account' do
+      visit '/'
+      click_on 'Sign up'
+      click_on 'Sign up'
 
+      expect(page).to have_content('2 errors prohibited this user from being saved:')
+      expect(page).to have_content('Sign up')
     end
   end
 end

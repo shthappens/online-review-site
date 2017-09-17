@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <% @craft_beers.each do |beer| %>
+    <%= beer.name %>
+    <%= beer.brewery %>
+    <%= beer.craft_beer_type %>
+  <% end %>
+</p>

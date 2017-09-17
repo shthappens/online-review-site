@@ -1,9 +1,15 @@
+<header>
 <h1>New Craft Beer Review</h1>
+  <%= link_to 'Sign In', new_user_session_path %>|<%= link_to "Sign Up", new_user_registration_path %>
+</header>
 
 <body>
 
-<%= link_to 'Submit a Craft Beer Review', new_craft_beer_review_path %></br>
-
-<%= link_to 'Sign In', new_user_session_path %>|<%= link_to "Sign Up", new_user_registration_path %>
+  <%= render 'form', craft_beer_review: @craft_beer_review %>
 
 </body>
+
+<footer>
+  <%= link_to 'Submit a Craft Beer Review', new_craft_beer_review_path %></br>
+  <%= link_to 'Back', new_craft_beer_review_path %>
+</footer>

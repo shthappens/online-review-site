@@ -1,0 +1,26 @@
+<%= form_with(model: craft_beer_review, local: true) do |form| %>
+  <% if craft_beer_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(craft_beer_review.errors.count, "error") %> prohibited this Craft Beer Review from being saved:</h2>
+
+      <ul>
+      <% craft_beer_review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :craft_beer_review_description %>
+
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.select :rating, (1..6), id: :craft_beer_review_rating %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="nav-bar">
+<%= link_to 'Craft Beers', '/' %> |
+<% if user_signed_in? %>
+  <div class="auth-links">
+    <%= link_to 'Edit account', edit_user_registration_path %> |
+    <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
+    <%= link_to "Submit a new Craft Beer", new_craft_beer_path %> |
+    <%= link_to "Review a Craft Beer", craft_beers_path %>
+  </div>
+<% else %>
+  <div class="auth-links">
+    <%= link_to 'Sign in', new_user_session_path %> |
+    <%= link_to 'Sign up', new_user_registration_path %> |
+  </div>
+<% end %>
+
+</div>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'craft_beer/index'
+  # get 'craft_beers/index'
 
-  root "craft_beer#index"
+  root "craft_beers#index"
 
   resources :craft_beers, :craft_beer_reviews
 

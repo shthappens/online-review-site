@@ -1,0 +1,14 @@
+<nav>
+  <%= render "layouts/navigation" %>
+</nav>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Craft Beers</h1>
+
+<body>
+    <% @craft_beers.each do |beer| %>
+    Name: <%= beer.name %> Brewery: <%= beer.brewery %> Type: <%= beer.craft_beer_type %></br>
+  <% end %>
+  </br>
+</body>

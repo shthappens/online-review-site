@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CraftBeerController, type: :controller do
+RSpec.describe CraftBeersController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
