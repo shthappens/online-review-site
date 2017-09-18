@@ -1,6 +1,9 @@
-# As an authenticated user
-# I want to view a list of items
-# So that I can pick items to review
+require "rails_helper"
+
+# As an unauthenticated user
+# I want to sign in
+# So that I can post items and review them
+
 
 feature "Authenticated user signs in to views items" do
 
@@ -8,7 +11,8 @@ feature "Authenticated user signs in to views items" do
     user = FactoryGirl.create(:user)
     beer = FactoryGirl.create(:craft_beer)
 
-    visit new_user_session_path
+    visit "/"
+    click_on "Sign in"
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Log in"
