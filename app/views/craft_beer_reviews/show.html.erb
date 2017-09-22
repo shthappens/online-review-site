@@ -1,0 +1,24 @@
+<nav>
+  <%= render "layouts/navigation" %>
+</nav>
+
+<p id="notice"><%= notice %></p>
+
+<div>
+  <strong>
+    Name: <%= @craft_beers.name %></br>
+  </strong>
+
+</div>
+
+
+
+<% if user_signed_in? %>
+  <ul>
+    <li><%= link_to "Add a Review", new_craft_beer_craft_beer_review_path(@craft_beers) %></li>
+    <li><%= link_to "Update this Craft Beer", edit_craft_beer_path %></li>
+  </ul>
+  <%= button_to "Delete this Craft Beer", @craft_beer, :method => :delete %></li>
+<% end %>
+
+<%= link_to "Back", craft_beers_path %>
