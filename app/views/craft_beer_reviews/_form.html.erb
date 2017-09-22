@@ -1,4 +1,4 @@
-<%= form_with(model: craft_beer_review, local: true) do |form| %>
+<%= form_for [@craft_beer, @craft_beer_review] do |form| %>
   <% if craft_beer_review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(craft_beer_review.errors.count, "error") %> prohibited this Craft Beer Review from being saved:</h2>
