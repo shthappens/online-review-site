@@ -4,11 +4,17 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <% @craft_beers.each do |beer| %>
-    <%= beer.name %>
-    <%= beer.brewery %>
-    <%= beer.craft_beer_type %>
+  <ul>
+    <li>Name: <%=@craft_beer.name%></li>
+    <li>Brewery: <%=@craft_beer.brewery%></li>
+    <li>Type: <%=@craft_beer.craft_beer_type%></li>
+    <li><%= link_to "Review This Craft Beer", new_craft_beer_craft_beer_review_path(@craft_beer)%></li>
+  </ul>
+
+  <h3>Reviews:</h3>
+  <% @craft_beer.craft_beer_reviews.each do |craft_beer_review|%>
+    <ul>
+      <li>Rating:<%= craft_beer_review.rating %></li>
+      <li>Description:<%= craft_beer_review.description %></li>
+    </ul>
   <% end %>
-</p>

@@ -10,7 +10,7 @@ class CraftBeersController < ApplicationController
   end
 
   def show
-    @craft_beers = CraftBeer.order(created_at: :asc)
+    @craft_beer = CraftBeer.find(params[:id])
   end
 
   # POST /craft_beers
