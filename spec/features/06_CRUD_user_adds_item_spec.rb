@@ -18,8 +18,7 @@ feature "Authenticated user adds an item to the database" do
     visit new_craft_beer_path
     fill_in "Name", with: beer.name
     fill_in "Brewery", with: beer.brewery
-    fill_in "craft_beer_type", with: beer.craft_beer_type
-    # fill_in "user_id", with: beer.user_id
+    select "Double IPA", :from => "craft_beer[craft_beer_type]"
     click_button "Create Craft beer"
 
     expect(page).to have_content "Craft Beer was successfully created."

@@ -5,12 +5,32 @@ class CraftBeersController < ApplicationController
     @craft_beers = CraftBeer.all
   end
 
+  def edit
+    @craft_beer = CraftBeer.find(params[:id])
+  end
+
   def new
     @craft_beer = CraftBeer.new
   end
 
   def show
     @craft_beer = CraftBeer.find(params[:id])
+  end
+
+  def update
+    @craft_beer = CraftBeer.find(params[:id])
+    if @craft_beer.update(craft_beer_params)
+      redirect_to @craft_beer, notice: "Craft Beer was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @craft_beer = CraftBeer.find(params[:id])
+    @craft_beer.delete
+    redirect_to craft_beers_path
+    flash[:notice] = "Craft Beer successfully deleted."
   end
 
   # POST /craft_beers

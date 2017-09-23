@@ -4,7 +4,6 @@ require "rails_helper"
 # I want to sign in
 # So that I can post items and review them
 
-
 feature "Authenticated user signs in to views items" do
 
   scenario "User signs in" do
@@ -21,6 +20,6 @@ feature "Authenticated user signs in to views items" do
     expect(page).to have_content("Sign out")
     expect(page).to have_content("Flume")
     expect(page).to have_content("Mast Landing")
-    expect(page).to have_content("Double IPA")
+    expect(page).to have_content("Details | Add Review")
   end
 end
