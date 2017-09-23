@@ -8,6 +8,7 @@
     <li>Name: <%=@craft_beer.name%></li>
     <li>Brewery: <%=@craft_beer.brewery%></li>
     <li>Type: <%=@craft_beer.craft_beer_type%></li>
+    <li>Submitted By: <%=@craft_beer.user.email%></li>
     <li><%= link_to "Review This Craft Beer", new_craft_beer_craft_beer_review_path(@craft_beer)%></li>
   </ul>
 
@@ -18,3 +19,14 @@
       <li>Description:<%= craft_beer_review.description %></li>
     </ul>
   <% end %>
+
+  <% if current_user.nil? %>
+    <% "" %>
+  <% elsif current_user.id == @craft_beer.user_id %>
+    <ul>
+      <li><%= link_to "Update this Craft Beer", edit_craft_beer_path(@craft_beer) %></li>
+      <li><%= button_to "Delete this Craft Beer", @craft_beer, :method => :delete %></li>
+    </ul>
+  <% end %>
+
+  <%= link_to "Back", craft_beers_path %>

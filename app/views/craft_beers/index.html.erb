@@ -2,18 +2,25 @@
   <%= render "layouts/navigation" %>
 </nav>
 
-<p id="notice"><%= notice %></p>
-
 <h1>Craft Beers</h1>
 
-<body>
+<table>
+  <thead>
+    <tr>
+      <th>Craft Beer</th>
+      <th>Brewery</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
     <% @craft_beers.each do |beer| %>
-    <ul>
-      <li>Name: <%= beer.name %></li>
-      <li>Brewery: <%= beer.brewery %></li>
-      <li>Type: <%= beer.craft_beer_type %></li>
-      <li><%= link_to "Review This Craft Beer", new_craft_beer_craft_beer_review_path(beer.id)%></li>
-    </ul>
+    <tr>
+      <td><%= beer.name %></td>
+      <td><%= beer.brewery %></td>
+      <td><%= link_to "Details", craft_beer_path(beer.id)%> |
+        <%= link_to "Add Review", new_craft_beer_craft_beer_review_path(beer.id)%></td>
+    </tr>
   <% end %>
   </br>
-</body>
+</tbody>

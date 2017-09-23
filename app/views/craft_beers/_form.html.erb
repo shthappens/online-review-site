@@ -23,9 +23,9 @@
 
   <div class="field">
     <%= form.label :type_of_beer %>
-    <%= form.text_field :craft_beer_type, id: :craft_beer_type %>
+    <%= form.select :craft_beer_type, ["Ale", "Bock", "Double IPA", "IPA", "Lager", "Pale Ale", "Pilsner", "Porter", "Stout", "Sour"], :prompt => "Select one" %>
   </div>
-  
+
   <div class="actions">
     <%= form.submit %>
   </div>
