@@ -1,9 +1,30 @@
 class CraftBeerReviewsController < ApplicationController
   before_action :authenticate_user!
 
+  def edit
+    @craft_beer = CraftBeer.find(params[:craft_beer_id])
+    @craft_beer_review = CraftBeerReview.find(params[:id])
+  end
+
   def new
     @craft_beer_review = CraftBeerReview.new
     @craft_beer = CraftBeer.find(params[:craft_beer_id])
+  end
+
+  def update
+    @craft_beer_review = CraftBeerReview.find(params[:id])
+    if @craft_beer_review.update(craft_beer_review_params)
+      redirect_to craft_beers_path, notice: "Craft Beer review was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @craft_beer_review = CraftBeerReview.find(params[:id])
+    @craft_beer_review.delete
+    redirect_to craft_beers_path
+    flash[:notice] = "Craft Beer review was successfully deleted."
   end
 
   def create
@@ -33,7 +54,7 @@ class CraftBeerReviewsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
 
     def craft_beer_review_params
-      params.require(:craft_beer_review).permit(:description, :rating)
+      params.require(:craft_beer_review).permit(:description, :rating, :craft_beer_id)
     end
 
 end

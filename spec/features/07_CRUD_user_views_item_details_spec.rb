@@ -48,6 +48,6 @@ feature "Authenticated user views item details" do
     click_on "Details"
     expect(page).to have_content("Geary's Summer Ale")
     expect(page).to have_content("Ale")
-    expect(page).to have_content("Review This Craft Beer")
+    expect(page).to have_content("Review this Craft Beer")
   end
 end
