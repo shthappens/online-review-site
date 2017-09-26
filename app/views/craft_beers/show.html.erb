@@ -9,24 +9,31 @@
     <li>Brewery: <%=@craft_beer.brewery%></li>
     <li>Type: <%=@craft_beer.craft_beer_type%></li>
     <li>Submitted By: <%=@craft_beer.user.email%></li>
-    <li><%= link_to "Review This Craft Beer", new_craft_beer_craft_beer_review_path(@craft_beer)%></li>
+  </br>
+    <% if current_user.nil? %>
+      <% "" %>
+    <% elsif current_user.id == @craft_beer.user_id %>
+      <li>
+        <%= link_to "Update this Craft Beer", edit_craft_beer_path(@craft_beer) %>
+        <%= button_to "Delete this Craft Beer", @craft_beer, method: :delete %>
+      </li>
+    <% end %>
   </ul>
 
   <h3>Reviews:</h3>
-  <% @craft_beer.craft_beer_reviews.each do |craft_beer_review|%>
     <ul>
-      <li>Rating:<%= craft_beer_review.rating %></li>
-      <li>Description:<%= craft_beer_review.description %></li>
+      <li><%= link_to "Review this Craft Beer", new_craft_beer_craft_beer_review_path(@craft_beer)%></li></br>
+      <% @craft_beer.craft_beer_reviews.each do |craft_beer_review|%>
+        <li>Rating:<%= craft_beer_review.rating %></br>
+          Description:<%= craft_beer_review.description %></br>
+          <% if current_user.nil? %>
+          <% "" %>
+          <% elsif current_user.id == craft_beer_review.user_id %>
+            <%= link_to "Update this Craft Beer Review", edit_craft_beer_craft_beer_review_path(@craft_beer, craft_beer_review)%>
+            <%= button_to "Delete this Craft Beer Review", craft_beer_craft_beer_review_path(@craft_beer, craft_beer_review), method: :delete %>
+          <% end %></br>
+        </li>
+      <% end %>
     </ul>
-  <% end %>
 
-  <% if current_user.nil? %>
-    <% "" %>
-  <% elsif current_user.id == @craft_beer.user_id %>
-    <ul>
-      <li><%= link_to "Update this Craft Beer", edit_craft_beer_path(@craft_beer) %></li>
-      <li><%= button_to "Delete this Craft Beer", @craft_beer, :method => :delete %></li>
-    </ul>
-  <% end %>
-
-  <%= link_to "Back", craft_beers_path %>
+    <%= link_to "Back", craft_beers_path %>
