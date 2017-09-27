@@ -3,6 +3,11 @@ class CraftBeersController < ApplicationController
 
   def index
     @craft_beers = CraftBeer.all
+    if params[:search]
+      @craft_beers = CraftBeer.search(params[:search]).order(name: :desc)
+    else
+      @craft_beers = CraftBeer.all
+    end
   end
 
   def edit
@@ -48,7 +53,7 @@ class CraftBeersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def craft_beer_params
-    params.required(:craft_beer).permit(:name, :brewery, :craft_beer_type)
+    params.required(:craft_beer).permit(:name, :brewery, :craft_beer_type, :search)
   end
 
 end

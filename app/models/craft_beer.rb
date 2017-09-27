@@ -6,4 +6,8 @@ class CraftBeer < ApplicationRecord
   validates :name, presence: true, allow_blank: false
   validates :brewery, presence: true, allow_blank: false
   validates :craft_beer_type, presence:true, allow_blank: false
+
+  def self.search(search)
+    where('name ILIKE ?', "%#{search}%")
+  end
 end
