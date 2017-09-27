@@ -1,0 +1,71 @@
+<h1>Admin</h1>
+
+<h2 class="table-title">Users</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><strong><%= user.email %></strong></td>
+        <td><% if user.admin? %>
+            <%= "Admin" %>
+        <% else %>
+            <%= link_to 'Delete User', user_registration_path(user), method: :delete %>
+        <% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="table-title">Craft Beers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brewery</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @craft_beers.each do |craft_beer| %>
+      <tr>
+        <td><strong><%= craft_beer.name %></strong></td>
+        <td><%= craft_beer.brewery %></td>
+        <td><%= link_to 'Delete Craft Beer', craft_beer_path(craft_beer.id), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="table-title">Craft Beer Reviews</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @craft_beer_reviews.each do |review| %>
+      <tr>
+        <td><strong><%= review.description %></strong></td>
+        <td><%= review.user.email %></td>
+        <td><%= button_to "Delete this Craft Beer Review", craft_beer_craft_beer_review_path(review.craft_beer_id, review), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
